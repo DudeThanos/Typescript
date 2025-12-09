@@ -114,3 +114,116 @@ To define a tuple, specify the type of each element in the array:
 let ourTuple: [number, boolean, string];
 // initialize correctly
 ourTuple = [5, false, 'Coding God was here'];#
+
+# Objects
+TypeScript has a specific syntax for typing objects.
+const car: { type: string, model: string, year: number } = {
+  type: "Toyota",
+  model: "Corolla",
+  year: 2009
+};
+
+> TypeScript can infer the types of properties based on their values.
+> Optional properties are properties that don't have to be defined in the object definition.
+> Index signatures can be used for objects without a defined list of properties.
+    > const nameAgeMap: { [index: string]: number } = {};
+
+# Enum
+An enum is a special "class" that represents a group of constants (unchangeable variables).
+Enums come in two flavors string and numeric.
+By default, enums will initialize the first value to 0 and add 1 to each additional value:
+enum CardinalDirections {
+  North = 1,
+  East,
+  South,
+  West
+}
+// logs 1
+console.log(CardinalDirections.North);
+// logs 4
+console.log(CardinalDirections.West);
+...
+Enums can also be string..
+enum CardinalDirections {
+  North = 'North',
+  East = "East",
+  South = "South",
+  West = "West"
+};
+// logs "North"
+console.log(CardinalDirections.North);
+// logs "West"
+console.log(CardinalDirections.West);
+
+# Type Aliases
+Type Aliases allow defining types with a custom name (an Alias).
+Type Aliases can be used for primitives like string or more complex types such as objects and arrays:
+.
+type CarYear = number
+type CarType = string
+type CarModel = string
+type Car = {
+  year: CarYear,
+  type: CarType,
+  model: CarModel
+}
+
+const carYear: CarYear = 2001
+const carType: CarType = "Toyota"
+const carModel: CarModel = "Corolla"
+const car: Car = {
+  year: carYear,
+  type: carType,
+  model: carModel
+};
+.
+
+  > Union & Intersection Type
+type Animal = { name: string };
+type Bear = Animal & { honey: boolean }; //intersection
+const bear: Bear = { name: "Winnie", honey: true };
+
+type Status = "success" | "error"; //union
+let response: Status = "success";
+
+# Interfaces
+Interfaces are similar to type aliases, except they only apply to object types.
+.
+interface Rectangle {
+  height: number,
+  width: number
+}
+
+const rectangle: Rectangle = {
+  height: 20,
+  width: 10
+};
+.
+> Interface merging can also be done
+interface Animal { name: string; } interface Animal { age: number; } const dog: Animal = { name: "Fido", age: 5 };
+.
+> Interfaces can extend each other's definition.
+Extending an interface means you are creating a new interface with the same properties as the original, plus something new.
+.
+interface ColoredRectangle extends Rectangle {
+  color: string
+}
+
+const coloredRectangle: ColoredRectangle = {
+  height: 20,
+  width: 10,
+  color: "red"
+};
+
+# Union
+Union types are used when a value can be more than a single type.
+Such as when a property would be string or number.
+.
+> using '|' -
+function printStatusCode(code: string | number) {
+  console.log(`My status code is ${code}.`)
+}
+printStatusCode(404);
+printStatusCode('404');
+
+# 
