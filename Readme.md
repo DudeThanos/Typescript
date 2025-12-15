@@ -226,4 +226,71 @@ function printStatusCode(code: string | number) {
 printStatusCode(404);
 printStatusCode('404');
 
+# Functions
+Follow Notes.md
+
+# Type Casting
+Change the type of the variable - Casting is the process of overriding a type.
+Sometimes it is necessary such as when incorrect type is provided by a library.
+
+> as : let x: unknown = 'hello';
+console.log((x as string).length);
+
+Using <> works the same as casting with as.
+> <> : let x: unknown = 'hello';
+console.log((<string>x).length);
+
+This type of casting will not work with TSX, such as when working on *React* files.
+
+~ Force casting
+To override type errors that TypeScript may throw when casting, first cast to unknown, then to the target type.
+let x = 'hello';
+console.log(((x as unknown) as number).length); // x is not actually a number so this will return undefined
+
+# Classes
+Follow Notes.md
+> The members of a class (properties & methods) are typed using type annotations, similar to variables.
+> There are three main visibility modifiers in TypeScript.
+  public - (default) allows access to the class member from anywhere
+  private - only allows access to the class member from within the class
+  protected - allows access to the class member from itself and any classes that inherit it
+> Remeber Interfaces from Types Aliases & Interfaces, The interfcaes can only be used with object types.
+> class Person {
+    name: string;
+  }
+
+  const person = new Person();
+  person.name = "Jane";
+> The this keyword in a class usually refers to the instance of the class
+
+> Similar to arrays, the readonly keyword can prevent class members from being changed.
+> Interfaces (covered here) can be used to define the type a class must follow through the implements keyword.
+> A class can implement multiple interfaces by listing each one after implements, separated by a comma like so: class Rectangle implements Shape, Colored 
+> Classes can extend each other through the extends keyword. A class can only extend one other class.
+> When a class extends another class, it can replace the members of the parent class with the same name.
+  Newer versions of TypeScript allow explicitly marking this with the override keyword.
+
+~ Abstract
+> Classes can be written in a way that allows them to be used as a base class for other classes without having to implement all the members.
+  This is done by using the abstract keyword.
+  Members that are left unimplemented also use the abstract keyword.
+
+> abstract class Polygon {
+  public abstract getArea(): number;
+
+  public toString(): string {
+    return `Polygon[area=${this.getArea()}]`;
+  }
+}
+
+class Rectangle extends Polygon {
+  public constructor(protected readonly width: number, protected readonly height: number) {
+    super();
+  }
+
+  public getArea(): number {
+    return this.width * this.height;
+  }
+}
+
 # 
