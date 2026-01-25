@@ -226,6 +226,9 @@ function printStatusCode(code: string | number) {
 printStatusCode(404);
 printStatusCode('404');
 
+
+EX: status: "ordered" | "completed"
+
 # Functions
 Follow Notes.md
 
@@ -293,4 +296,6 @@ class Rectangle extends Polygon {
   }
 }
 
-# 
+# Basic generics
+
+# Utility Types
