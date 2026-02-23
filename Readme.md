@@ -299,3 +299,6 @@ class Rectangle extends Polygon {
 # Basic generics
 
 # Utility Types
+relearn
+# Keyof
+realearn
